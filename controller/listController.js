@@ -77,7 +77,7 @@ exports.showListId = asyncMiddleware(async (req, res) => {
 
 //update list
 
-exports.updateList = asyncMiddleware(async (req, res) => {
+exports.updateListById = asyncMiddleware(async (req, res) => {
   const list = await List.update(
     {
       statusList: req.body.statusList,
@@ -93,10 +93,22 @@ exports.updateList = asyncMiddleware(async (req, res) => {
       reason: "active",
     });
   } else {
-    return res.status(202).send({
+    return res.status(400).send({
       reason: "unarchive",
     });
   }
+});
+
+exports.updateList = asyncMiddleware(async (req, res) => {
+  const list = await List.update({
+    id: req.body.id,
+    nameList: req.body.nameList,
+    colorHexList: req.body.colorHexList,
+  });
+  res.status(201).send({
+    status: "list has been update",
+    list: list,
+  });
 });
 
 exports.deleteList = asyncMiddleware(async (req, res) => {

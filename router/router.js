@@ -17,31 +17,40 @@ module.exports = function (app) {
 
   app.get("/api/list", [authJwt.verifyToken], listController.showList);
   app.get("/api/list/:id", [authJwt.verifyToken], listController.showListId);
-  app.put("/api/list/:id", [authJwt.verifyToken], listController.updateList);
+  app.put("/api/list", [authJwt.verifyToken], listController.updateList);
+  app.put(
+    "/api/list/:id",
+    [authJwt.verifyToken],
+    listController.updateListById
+  );
   app.delete("/api/list/:id", [authJwt.verifyToken], listController.deleteList);
 
   //list item
 
-  app.post("/api/listItem", [authJwt.verifyToken], listItemController.listItem);
+  app.post(
+    "/api/listItem",
+    // [authJwt.verifyToken],
+    listItemController.listItem
+  );
 
   app.get(
     "/api/listItem",
-    [authJwt.verifyToken],
+    // [authJwt.verifyToken],
     listItemController.showListItem
   );
   app.put(
     "/api/listItem",
-    [authJwt.verifyToken],
+    // [authJwt.verifyToken],
     listItemController.updateListItem
   );
   app.put(
     "/api/listItem/:id",
-    [authJwt.verifyToken],
+    // [authJwt.verifyToken],
     listItemController.updateList
   );
   app.delete(
-    "/api/listItem/:id",
-    [authJwt.verifyToken],
+    "/api/listItem/delete/:id",
+    // [authJwt.verifyToken],
     listItemController.deleteList
   );
 };
