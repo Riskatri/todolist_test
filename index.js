@@ -23,17 +23,3 @@ var server = app.listen(7000, "127.0.0.1", function () {
   var port = server.address().port;
   console.log("App listening at http://%s:%s", host, port);
 });
-// function initial() {
-//   Role.create({
-//     id: 1,
-//     name: "USER"
-//   });
-//   Role.create({
-//     id: 2,
-//     name: "ADMIN"
-//   });
-//   Role.create({
-//     id: 3,
-//     name: "PM"
-//   });
-//
